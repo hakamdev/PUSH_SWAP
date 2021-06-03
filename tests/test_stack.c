@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 21:21:29 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/02 21:40:08 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/03 16:43:12 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ int		main(void)
 	printf ("\n\nPOPED:\t\t%d\n\n", s->pop(s));
 	printf ("\n\nPOPED:\t\t%d\n\n", s->pop(s));
 	printf ("\n\nPOPED:\t\t%d\n\n", s->pop(s));
+	printf ("\n\nPOPED:\t\t%d\n\n", s->pop(s));
+
+	// printf ("\nPEEKED:\t\t%d\n\n", s->peek(s));
+	// printf ("\nPEEKED:\t\t%d\n\n", s->peek(s));
+	// printf ("\nPEEKED:\t\t%d\n\n", s->peek(s));
 
 	display(s);
 	

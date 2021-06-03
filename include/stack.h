@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/01 20:12:36 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/03 16:41:00 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,22 @@
 #include <string.h>
 #include <stdlib.h>
 #include "types.h"
+#include "utility.h"
 
-typedef struct s_stack {
+#define E_UNDERFLOW "Stack Underflow, caused by POP Operation on an Empty Stack!"
+#define E_INVALID_TYPE "Invalid Data Type, caused by Non-Numeric value!"
+#define E_MALLOC "Memory allocation failed, caused by malloc failure!"
+
+typedef struct s_stack
+{
 	int		*data;
 	int		size;
 	int		limit;
 	int		top;
 	int		tail;
-	void	*(*push)(int *value);
-	int		(*pop)(void);
-	int		(*peek)(void);
+	void	(*push)(struct s_stack *this, int value);
+	int		(*pop)(struct s_stack *this);
+	int		(*peek)(struct s_stack *this);
 	t_bool	is_empty;
 } t_stack;
 
@@ -41,9 +47,9 @@ t_stack	*new_stack_from(t_stack *other);
 /*
 ** BASIC OPERATIONS ON A STACK
 */
-void	*push(int *value);
-int		pop(void);
-int		peek(void);
+void	push(t_stack *this, int value);
+int		pop(t_stack *this);
+int		peek(t_stack *this);
 
 /*
 ** TESTING
