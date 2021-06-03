@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 19:17:18 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/03 19:58:59 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_stack
 	void	(*push)(struct s_stack *this, int value);
 	int		(*pop)(struct s_stack *this);
 	int		(*peek)(struct s_stack *this);
+	t_bool	(*is_sorted)(struct s_stack *this);
 	t_bool	is_empty;
 } t_stack;
 
@@ -49,11 +50,12 @@ t_stack	*new_stack_from(t_stack *other);
 void	push(t_stack *this, int value);
 int		pop(t_stack *this);
 int		peek(t_stack *this);
+t_bool	is_sorted(t_stack *this);
 
 /*
 ** TESTING
 */
-void	display(t_stack *stack);
+void	display(t_stack *stack, t_bool meta);
 
 /*
 ** ADVANCED OPERATIONS ON A STACK

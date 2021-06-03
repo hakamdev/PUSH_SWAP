@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 19:16:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 19:31:56 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/03 20:04:18 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int ac, char **av)
 	t_stack	*a = new_stack_arg(ac, av);
 	if (a)
 	{
-		display(a);
+		display(a, true);
 	}
 	else
 		p_error("Provide Args!");

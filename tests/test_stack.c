@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 21:21:29 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 18:38:14 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/03 19:38:12 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int		main(void)
 	// 	if (i % 35 == 0)
 	// 		s->push(s, i);
 
-	display(s);
-	display(s2);
+	display(s, true);
+	display(s2, true);
 
 	printf ("POPED:\t\t%d\n", s->pop(s));
 	printf ("POPED:\t\t%d\n", s->pop(s2));
@@ -52,8 +52,8 @@ int		main(void)
 	// printf ("\nPEEKED:\t\t%d\n\n", s->peek(s));
 	// printf ("\nPEEKED:\t\t%d\n\n", s->peek(s));
 
-	display(s);
-	display(s2);
+	// display(s);
+	// display(s2);
 	
 	return (0);
 }

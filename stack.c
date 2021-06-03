@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 20:14:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 19:25:33 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/03 20:06:42 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_stack *new_stack_s(int limit)
 	new->peek = peek;
 	new->pop = pop;
 	new->push = push;
+	new->is_sorted = is_sorted;
 	return (new);
 }
 
@@ -139,20 +140,40 @@ int		peek(t_stack *this)
 	return (this->data[this->top]);
 }
 
-/*
-** TESTING
-*/
-void	display(t_stack *stack)
+t_bool	is_sorted(t_stack *this)
 {
 	int		i;
 
-	printf("SIZE:\t\t%d\n", stack->size);
-	printf("LIMIT:\t\t%d\n", stack->limit);
-	printf("TOP:\t\t%d\n", stack->top);
-	printf("TAIL:\t\t%d\n", stack->tail);
-	printf("EMPTY:\t\t%s\n", stack->is_empty ? "TRUE" : "FALSE");
-	printf("TOP VAL:\t%d\n\n", stack->peek(stack));
+	if (!this || this->is_empty)
+		return (false);
+	if (this->size == 1)
+		return (true);
+	i = this->size;
+	while (--i > 0)
+	{
+		if (this->data[i] > this->data[i - 1])
+			return (false);
+	}
+	return (true);
+}
 
+/*
+** TESTING
+*/
+void	display(t_stack *stack, t_bool meta)
+{
+	int		i;
+
+	if (meta)
+	{
+		printf("SIZE:\t\t%d\n", stack->size);
+		printf("LIMIT:\t\t%d\n", stack->limit);
+		printf("TOP:\t\t%d\n", stack->top);
+		printf("TAIL:\t\t%d\n", stack->tail);
+		printf("EMPTY:\t\t%s\n", stack->is_empty ? "TRUE" : "FALSE");
+		printf("SORTED?:\t%s\n\n", stack->is_sorted(stack) ? "TRUE" : "FALSE");
+		// printf("TOP VAL:\t%d\n\n", stack->peek(stack));
+	}
 	i = stack->top;
 	printf("[");
 	while (i > -1)

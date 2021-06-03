@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 18:18:54 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 18:19:14 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/03 19:52:28 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	s(t_stack *stack)
 
 	if (!stack || stack->size < 2)
 		return ;
-	value = stack->data[0];
-	stack->data[0] = stack->data[1];
-	stack->data[1] = value;
+	value = stack->data[stack->top];
+	stack->data[stack->top] = stack->data[stack->top - 1];
+	stack->data[stack->top - 1] = value;
 }
 
 void	ss(t_stack *a, t_stack *b)
