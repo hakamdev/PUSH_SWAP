@@ -3,3 +3,4 @@ a.out
 *.exe
 checker
 push_swap
+.DS_Store
