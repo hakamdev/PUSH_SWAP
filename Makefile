@@ -6,7 +6,7 @@
 #    By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 18:20:02 by ehakam            #+#    #+#              #
-#    Updated: 2021/06/03 20:04:36 by ehakam           ###   ########.fr        #
+#    Updated: 2021/06/03 21:43:53 by ehakam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,10 @@ SRC_INST=	stack.c \
 			utility/utility.c \
 			tests/test_instr.c
 
-all: test_stack2
+all: test_checker
+
+test_checker: $(SRC_CHKR)
+	@gcc $(SRC_CHKR) -o checker
 
 test_stack: $(SRC_STK)
 	@gcc $(SRC_STK) -o stk_test.exe

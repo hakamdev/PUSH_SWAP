@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 19:58:59 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/03 21:41:25 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,8 @@ void	ss(t_stack *a, t_stack *b);
 void	p(t_stack *src, t_stack *dest);
 void	r(t_stack *stack, t_bool reverse);
 void	rr(t_stack *a, t_stack *b, t_bool reverse);
+
+t_bool	apply(t_stack *a, t_stack *b, char *instr);
+t_bool	is_valid(char *instr);
 
 #endif
