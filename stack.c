@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 20:14:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 18:18:52 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/03 19:25:33 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 /*
 ** FUNCTIONS FOR INITIALIZING A STACK
 */
+t_stack *new_stack()
+{
+	return (new_stack_s(5));
+}
+
 t_stack *new_stack_s(int limit)
 {
 	int		i;
@@ -43,11 +48,6 @@ t_stack *new_stack_s(int limit)
 	return (new);
 }
 
-t_stack *new_stack()
-{
-	return (new_stack_s(5));
-}
-
 t_stack	*new_stack_from(t_stack *other)
 {
 	int			i;
@@ -67,6 +67,20 @@ t_stack	*new_stack_from(t_stack *other)
 	new->size = other->size;
 	new->tail = other->tail;
 	new->is_empty = false;
+	return (new);
+}
+
+t_stack	*new_stack_arg(int ac, char **av)
+{
+	int		i;
+	t_stack	*new;
+
+	i = ac;
+	if (!av || ac < 2)
+		return (NULL);
+	new = new_stack_s(ac);
+	while (--i > 0)
+		new->push(new, ft_atoi_err(av[i]));
 	return (new);
 }
 
@@ -120,6 +134,8 @@ int		pop(t_stack *this)
 
 int		peek(t_stack *this)
 {
+	if (this->size == 0)
+		p_error(E_UNDERFLOW);
 	return (this->data[this->top]);
 }
 
@@ -134,7 +150,8 @@ void	display(t_stack *stack)
 	printf("LIMIT:\t\t%d\n", stack->limit);
 	printf("TOP:\t\t%d\n", stack->top);
 	printf("TAIL:\t\t%d\n", stack->tail);
-	printf("EMPTY:\t\t%s\n\n", stack->is_empty ? "TRUE" : "FALSE");
+	printf("EMPTY:\t\t%s\n", stack->is_empty ? "TRUE" : "FALSE");
+	printf("TOP VAL:\t%d\n\n", stack->peek(stack));
 
 	i = stack->top;
 	printf("[");

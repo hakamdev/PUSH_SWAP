@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 16:41:00 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/03 19:17:18 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@
 #include "types.h"
 #include "utility.h"
 
-#define E_UNDERFLOW "Stack Underflow, caused by POP Operation on an Empty Stack!"
-#define E_INVALID_TYPE "Invalid Data Type, caused by Non-Numeric value!"
-#define E_MALLOC "Memory allocation failed, caused by malloc failure!"
+
 
 typedef struct s_stack
 {
@@ -42,6 +40,7 @@ typedef struct s_stack
 */
 t_stack *new_stack();
 t_stack *new_stack_s(int limit);
+t_stack	*new_stack_arg(int ac, char **av);
 t_stack	*new_stack_from(t_stack *other);
 
 /*
