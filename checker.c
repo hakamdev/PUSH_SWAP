@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 19:56:07 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/04 15:38:54 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/04 20:06:18 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,7 @@ int		main(int argc, char **argv)
 	a = new_stack_arg(argc, argv);
 	if (!a)
 		return (0);
-	if (a->is_sorted(a))
-	{
-		printf("OK\n");
-		return (0);
-	}
-	b = new_stack_s(argc / 2);
+	b = new_stack_s(argc);
 	while (true)
 	{
 		read = get_next_line(0, &instr);
