@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 20:14:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 20:06:42 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/04 15:47:34 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,23 @@ t_stack	*new_stack_from(t_stack *other)
 	return (new);
 }
 
+t_bool	contains(t_stack *this, int value)
+{
+	int		i;
+
+	i = -1;
+	if (!this || this->is_empty)
+		return (false);
+	while (++i < this->size)
+		if (this->data[i] == value)
+			return (true);
+	return (false);
+}
+
 t_stack	*new_stack_arg(int ac, char **av)
 {
 	int		i;
+	int		value;
 	t_stack	*new;
 
 	i = ac;
@@ -81,7 +95,12 @@ t_stack	*new_stack_arg(int ac, char **av)
 		return (NULL);
 	new = new_stack_s(ac);
 	while (--i > 0)
-		new->push(new, ft_atoi_err(av[i]));
+	{
+		value = ft_atoi_err(av[i]);
+		if (contains(new, value))
+			p_error("Duplicate Values!");
+		new->push(new, value);
+	}
 	return (new);
 }
 

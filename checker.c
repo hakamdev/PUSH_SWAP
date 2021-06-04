@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 19:56:07 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 21:42:32 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/04 15:38:54 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ int		main(int argc, char **argv)
 	t_stack		*a;
 	t_stack		*b;
 
+	if (argc < 2)
+		return (0);
 	a = new_stack_arg(argc, argv);
 	if (!a)
-		p_error("No Args!");
+		return (0);
 	if (a->is_sorted(a))
 	{
 		printf("OK\n");

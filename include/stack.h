@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 21:41:25 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/04 15:42:19 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include <stdlib.h>
 #include "types.h"
 #include "utility.h"
-
-
 
 typedef struct s_stack
 {
@@ -51,6 +49,7 @@ void	push(t_stack *this, int value);
 int		pop(t_stack *this);
 int		peek(t_stack *this);
 t_bool	is_sorted(t_stack *this);
+t_bool	contains(t_stack *this, int value);
 
 /*
 ** TESTING
