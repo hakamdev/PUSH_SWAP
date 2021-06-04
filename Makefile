@@ -6,7 +6,7 @@
 #    By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 18:20:02 by ehakam            #+#    #+#              #
-#    Updated: 2021/06/03 21:43:53 by ehakam           ###   ########.fr        #
+#    Updated: 2021/06/04 18:39:59 by ehakam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,3 +45,6 @@ test_stack2: $(SRC_STK2)
 
 test_instr: $(SRC_INST)
 	@gcc $(SRC_INST) -o intr_test.exe
+
+rm:
+	@rm -rf checker a.out */a.out *.exe
