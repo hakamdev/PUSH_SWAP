@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 20:14:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/04 15:47:34 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/05 18:20:16 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,45 @@ t_stack	*new_stack_arg(int ac, char **av)
 	return (new);
 }
 
+void	put_value_sorted(int *data, int size, int value)
+{
+	int		i;
+
+	i = size;
+	data[i] = value;
+	while (i > 0)
+	{
+		if (data[i] < data[i - 1])
+		{
+			data[i] = data[i - 1];
+			data[i - 1] = value;
+		}
+		else
+			break ;
+		--i;
+	}
+}
+
+t_list	*new_list_from(t_stack *stack)
+{
+	int		i;
+	t_list	*lst;
+
+	if (!stack || stack->is_empty)
+		return (NULL);
+	lst = malloc(sizeof(t_list));
+	if (!lst)
+		p_error(E_MALLOC);
+	lst->data = malloc(sizeof(int) * (stack->size + 1));
+	if (!lst->data)
+		p_error(E_MALLOC);
+	i = -1;
+	lst->size = 0;
+	while (++i < stack->size)
+		put_value_sorted(lst->data, lst->size++, stack->data[i]);
+	return (lst);
+}
+
 static t_stack	*extend(t_stack *stack)
 {
 	int		i;
@@ -199,6 +238,19 @@ void	display(t_stack *stack, t_bool meta)
 	{
 		printf(" %d%s", stack->data[i], i > 0 ? "," : "");
 		--i;
+	}
+	printf("]\n\n");
+}
+
+void	display_list(t_list *list)
+{
+	int		i;
+
+	i = -1;
+	printf("[");
+	while (++i < list->size)
+	{
+		printf(" %d%s", list->data[i], i < list->size-1 ? "," : "");
 	}
 	printf("]\n\n");
 }
