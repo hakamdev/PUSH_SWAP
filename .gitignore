@@ -2,5 +2,6 @@
 a.out
 *.exe
 checker
+checker_Mac
 push_swap
 .DS_Store
