@@ -1,4 +1,5 @@
 .vscode/
+*.dSYM/
 a.out
 *.exe
 checker
