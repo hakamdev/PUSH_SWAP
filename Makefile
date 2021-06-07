@@ -6,7 +6,7 @@
 #    By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 18:20:02 by ehakam            #+#    #+#              #
-#    Updated: 2021/06/05 18:48:28 by ehakam           ###   ########.fr        #
+#    Updated: 2021/06/07 19:09:08 by ehakam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRC_INST=	stack.c \
 all: test_push
 
 test_push: $(SRC_PS)
-	@gcc $(SRC_PS) -o push_swap
+	@gcc $(SRC_PS) -g -o push_swap
 	
 
 test_checker: $(SRC_CHKR)

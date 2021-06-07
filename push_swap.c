@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:22:59 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/06 21:33:43 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/07 19:29:48 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,31 +49,61 @@ char	*ps_handle_3(t_stack *a, t_stack *b, char *final_str)
 char	*ps_handle_5(t_stack *a, t_stack *b, char *final_str)
 {
 	int		i;
-	int		val1;
-	int		val2;
+	int		moves;
 	int		median;
 	t_list	*lst;
 
-	i = -1;
 	lst = new_list_from(a);
-	median = lst->data[lst->size / 2];
-	while (++i < a->size)
-		if (a->data[i] < median)
-			val1 = a->data[i];
-	while (++i < a->size)
-		if (a->data[i] < median)
-			val1 = a->data[i];
-	
-	
+	median = lst->data[(lst->size - 1) / 2];
+	int j = 3;
+	while (--j > 0)
+	{
+		i = -1;
+		while (++i < a->size)
+		{
+			if (a->data[i] < median)
+				break;
+		}
+		if (a->top - i < i + 1)
+		{
+			moves = a->top - i + 1;
+			while (--moves > 0)
+			{
+				r(a, false);
+				final_str = add(final_str, RA);
+			}
+		}
+		else
+		{
+			moves = i + 2;
+			while (--moves > 0)
+			{
+				r(a, true);
+				final_str = add(final_str, RRA);
+			}
+		}
+		p(a, b);
+		final_str = add(final_str, PB);
+	}
+	if (b->data[b->top] < b->data[b->top - 1])
+	{
+		s(b);
+		final_str = add(final_str, SB);
+	}
+	final_str = ps_handle_3(a, b, final_str);
+	p(b, a);
+	p(b, a);
+	final_str = add(final_str, PA);
+	final_str = add(final_str, PA);
 	return (final_str);
 }
 
-char	*push_swap(t_stack *a, t_stack *b)
-{
-	if (a->size == 3)
-		return (ps_handle_3(a, b));
-	return (NULL);
-}
+// char	*push_swap(t_stack *a, t_stack *b)
+// {
+// 	if (a->size == 3)
+// 		return (ps_handle_3(a, b));
+// 	return (NULL);
+// }
 
 int		main(int argc, char **argv)
 {
@@ -86,9 +116,24 @@ int		main(int argc, char **argv)
 	a = new_stack_arg(argc, argv);
 	if (!a)
 		return (0);
+	b = new_stack_s(argc);
 	final_instr = NULL;
-	final_instr = push_swap(a, b);
+	final_instr = ps_handle_5(a, b, final_instr);
 	dprintf(2, "%s", final_instr);
 	printf("%s", final_instr);
 	return (0);
 }
+
+// funcion (line) {
+// 	temp
+// 	while (read(temp))
+// 	{
+// 		temp();
+// 		join line temp;
+// 		work();
+// 	}
+// 	if (!line empty isatty()) {
+// 		funtion(line);
+// 	}
+// 	exit();
+// }
