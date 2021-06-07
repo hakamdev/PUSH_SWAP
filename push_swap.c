@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:22:59 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/07 19:57:22 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/07 19:59:06 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ char	*ps_handle_5(t_stack *a, t_stack *b, char *final_str)
 		return (ft_strjoin(final_str, ""));
 	lst = new_list_from(a);
 	median = lst->data[(lst->size - 1) / 2];
-	int j = 3;
-	while (--j > 0)
+	while (a->size > 3)
 	{
 		i = a->top + 1;
 		while (--i > 0)
