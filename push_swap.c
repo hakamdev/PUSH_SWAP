@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:22:59 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/07 19:59:06 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/08 22:03:37 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,21 @@ char	*ps_handle_5(t_stack *a, t_stack *b, char *final_str)
 		return (ft_strjoin(final_str, ""));
 	lst = new_list_from(a);
 	median = lst->data[(lst->size - 1) / 2];
+	
 	while (a->size > 3)
 	{
 		i = a->top + 1;
 		while (--i > 0)
 		{
 			if (a->data[i] < median)
-				break;
+				break ;
+			if (a->data[a->top - i] < median)
+			{
+				i = a->top - i;
+				break ;
+			}
 		}
+
 		if (a->top - i < i + 1)
 		{
 			moves = a->top - i + 1;
@@ -99,6 +106,119 @@ char	*ps_handle_5(t_stack *a, t_stack *b, char *final_str)
 	return (final_str);
 }
 
+char	*ps_handle_all2(t_stack *a, t_stack *b, char *final_str)
+{
+	int		i;
+	int		j;
+	int		moves;
+
+	i = -1;
+	
+	t_list *lst = new_list_from(a);
+	while (++i < lst->size)
+	{
+		j = -1;
+		while (++j < a->size)
+		{
+			if (a->data[j] == lst->data[i])
+			{
+				break ;
+			}
+			if (a->data[a->top - j] == lst->data[i])
+			{
+				j = a->top - j;
+				break ;
+			}
+		}
+		
+		if (a->top - j < j + 1)
+		{
+			moves = a->top - j + 1;
+			while (--moves > 0)
+			{
+				r(a, false);
+				final_str = add(final_str, RA);
+			}
+		}
+		else
+		{
+			moves = j + 2;
+			while (--moves > 0)
+			{
+				r(a, true);
+				final_str = add(final_str, RRA);
+			}
+		}
+		p(a, b);
+		final_str = add(final_str, PB);
+	}
+	while (b->size > 0)
+	{
+		p(b, a);
+		final_str = add(final_str, PA);
+	}
+	return (final_str);
+}
+
+char	*handle_chuck(t_stack *a, t_stack *b, int from, int to)
+{
+	int		i;
+	int		moves;
+	int num = to - from;
+	char	*string_;
+
+	string_ = NULL;
+	t_list *lst = new_list_from(a);
+	while (num-- >= 0)
+	{
+		i = -1;
+		while (++i < a->size)
+		{
+			if (a->data[i] >= lst->data[from] && a->data[i] <= lst->data[to])
+			{
+				break;
+			}
+			if (a->data[a->top - i] >= lst->data[from] && a->data[a->top - i] <= lst->data[to])
+			{
+				i = a->top - i;
+				break;
+			}
+		}
+		if (a->top - i < i + 1)
+		{
+			moves = a->top - i + 1;
+			while (--moves > 0)
+			{
+				r(a, false);
+				string_ = add(string_, RA);
+			}
+		}
+		else
+		{
+			moves = i + 2;
+			while (--moves > 0)
+			{
+				r(a, true);
+				string_ = add(string_, RRA);
+			}
+		}
+		p(a, b);
+		string_ = add(string_, PB);
+	}
+	display(a, false);
+	display(b, false);
+	return (string_);
+}
+
+char	*ps_handle_all(t_stack *a, t_stack *b, char *final_str)
+{
+	//final_str = handle_chuck(a, b, 0, 19);
+	//final_str = handle_chuck(a, b, 20, 39);
+	// final_str = handle_chuck(a, b, 40, 59);
+	// final_str = handle_chuck(a, b, 60, 79);
+	final_str = handle_chuck(a, b, 80, 99);
+	return NULL;
+}
 // char	*push_swap(t_stack *a, t_stack *b)
 // {
 // 	if (a->size == 3)
@@ -119,9 +239,9 @@ int		main(int argc, char **argv)
 		return (0);
 	b = new_stack_s(argc);
 	final_instr = NULL;
-	final_instr = ps_handle_5(a, b, final_instr);
-	dprintf(2, "%s", final_instr);
-	printf("%s", final_instr);
+	final_instr = ps_handle_all(a, b, final_instr);
+	// dprintf(2, "%s", final_instr);
+	// printf("%s", final_instr);
 	return (0);
 }
 
