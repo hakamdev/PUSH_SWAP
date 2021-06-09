@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:35:01 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 19:09:04 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 19:11:51 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int		p_error(char *message)
 {
 	write(2, "Error\n", 6);
-	write(2, message, ft_strlen(message));
-	write(2, "\n\n", 2);
+	//write(2, message, ft_strlen(message));
+	//write(2, "\n\n", 2);
 	exit(1);
 }
 

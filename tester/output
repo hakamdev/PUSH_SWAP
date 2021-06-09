@@ -1,0 +1,15 @@
+[0;35m Generating random numbers for stack_size 500...
+
+[0m[1;30m TEST 0: [0m[0;32mOK [0m[0;32m     7439 [0m instructions
+[1;30m TEST 1: [0m[0;32mOK [0m[0;32m     7732 [0m instructions
+[1;30m TEST 2: [0m[0;32mOK [0m[0;32m     7506 [0m instructions
+[1;30m TEST 3: [0m[0;32mOK [0m[0;32m     7617 [0m instructions
+[1;30m TEST 4: [0m[0;32mOK [0m[0;32m     7461 [0m instructions
+[1;30m TEST 5: [0m[0;32mOK [0m[0;32m     7469 [0m instructions
+[1;30m TEST 6: [0m[0;32mOK [0m[0;32m     7658 [0m instructions
+[1;30m TEST 7: [0m[0;32mOK [0m[0;32m     7532 [0m instructions
+[1;30m TEST 8: [0m[0;32mOK [0m[0;32m     7347 [0m instructions
+[1;30m TEST 9: [0m[0;32mOK [0m[0;32m     7498 [0m instructions
+
+Mean: 7525 for stack of size 500 
+

@@ -6,7 +6,7 @@
 #    By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 18:20:02 by ehakam            #+#    #+#              #
-#    Updated: 2021/06/09 17:22:16 by ehakam           ###   ########.fr        #
+#    Updated: 2021/06/09 19:10:43 by ehakam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_INST=	stack.c \
 			utility/utility.c \
 			tests/test_instr.c
 
-all: test_push
+all: test_push test_checker
 
 test_push: $(SRC_PS)
 	@gcc $(SRC_PS) -o push_swap

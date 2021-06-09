@@ -1,2 +1,2 @@
 #!/bin/bash
-ARG="$1"; ./push_swap $ARG | ./checker_Mac $ARG; ./push_swap $ARG | wc -l
+ARG="$1"; ./push_swap $ARG | ./checker $ARG; # ./push_swap $ARG | wc -l
