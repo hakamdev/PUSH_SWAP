@@ -6,54 +6,43 @@
 #    By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 18:20:02 by ehakam            #+#    #+#              #
-#    Updated: 2021/06/09 19:10:43 by ehakam           ###   ########.fr        #
+#    Updated: 2021/06/09 21:25:29 by ehakam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_STK =	stack.c \
+SRC_CKR	=	checker.c \
+			stack_core.c \
+			stack_init.c \
 			instructions.c \
+			stack_display.c \
 			utility/utility.c \
-			tests/test_stack.c
+			stack_init_utils.c \
+			utility/get_next_line.c
 
-SRC_STK2=	stack.c \
+SRC_PS	=	push_swap.c \
+			stack_core.c \
+			stack_init.c \
 			instructions.c \
+			stack_display.c \
+			push_swap_utils.c \
 			utility/utility.c \
-			tests/test_stack_arg.c
-			
+			stack_init_utils.c \
 
-SRC_CHKR=	stack.c \
-			checker.c \
-			instructions.c \
-			utility/utility.c \
-			utility/get_next_line.c \
+NAME	=	push_swap
+NAME_BNS=	checker
 
-SRC_PS	=	stack.c \
-			push_swap.c \
-			instructions.c \
-			utility/utility.c \
+all: $(NAME) $(NAME_BNS)
 
-SRC_INST=	stack.c \
-			instructions.c \
-			utility/utility.c \
-			tests/test_instr.c
+$(NAME): $(SRC_PS)
+	@gcc $(SRC_PS) -o $(NAME)
 
-all: test_push test_checker
+$(NAME_BNS): $(SRC_CKR)
+	@gcc $(SRC_CKR) -o $(NAME_BNS)
 
-test_push: $(SRC_PS)
-	@gcc $(SRC_PS) -o push_swap
-	
+clean:
+	@rm -rf *.o
 
-test_checker: $(SRC_CHKR)
-	@gcc $(SRC_CHKR) -o checker
+fclean: clean
+	@rm -rf $(NAME) $(NAME_BNS)
 
-test_stack: $(SRC_STK)
-	@gcc $(SRC_STK) -o stk_test.exe
-
-test_stack2: $(SRC_STK2)
-	@gcc $(SRC_STK2) -o stk2_test.exe
-
-test_instr: $(SRC_INST)
-	@gcc $(SRC_INST) -o intr_test.exe
-
-rm:
-	@rm -rf checker push_swap a.out */a.out *.exe
+re: fclean all

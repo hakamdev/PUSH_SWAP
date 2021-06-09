@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 14:22:33 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/03 16:17:47 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 21:00:30 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static int	ft_handle_nl(char **line, char **temp, char **rest)
 			return (ERR);
 		if (!(*rest = ft_strdup(&temp[0][nl_index + 1])))
 			return (ERR);
-		ft_free(&addup);
-		ft_free(temp);
+		free(addup);
+		free(*temp);
 		return (1);
 	}
 	return (INULL);
@@ -58,7 +58,7 @@ static int	ft_handle_rest(char **line, char **temp, char **rest)
 	{
 		if (ft_find_index(*rest, NL) > ERR)
 		{
-			ft_free(temp);
+			free(*temp);
 			*temp = *rest;
 			if ((ret = ft_handle_nl(line, temp, rest)) != INULL)
 				return (ret);
@@ -67,7 +67,7 @@ static int	ft_handle_rest(char **line, char **temp, char **rest)
 		{
 			if (!(*line = ft_strjoin(*line, *rest)))
 				return (ERR);
-			ft_free(rest);
+			free(*rest);
 		}
 	}
 	return (INULL);
@@ -97,7 +97,7 @@ int			get_next_line(int fd, char **line)
 			return (ERR);
 	}
 	if (!sread)
-		ft_free(&temp);
+		free(temp);
 	if (sread > 0)
 		return (1);
 	return (sread);

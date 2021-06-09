@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:35:01 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 19:11:51 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 21:24:12 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@ int		p_error(char *message)
 	//write(2, message, ft_strlen(message));
 	//write(2, "\n\n", 2);
 	exit(1);
-}
-
-void	ft_free(char **s)
-{
-	if (s && *s)
-	{
-		free(*s);
-		*s = NULL;
-	}
 }
 
 char	*ft_strsub(char **s, unsigned int start, size_t n)
@@ -73,7 +64,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (j < len2)
 		*(ss + i++) = *((char *)(s2 + j++));
 	*(ss + i) = '\0';
-	ft_free(&s1);
+	free(s1);
 	return (ss);
 }
 
@@ -105,35 +96,3 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-
-int		ft_atoi_err(char *str)
-{
-	int		i;
-	int		n;
-	long	r;
-
-	i = 0;
-	r = 0;
-	n = 1;
-	if (!str)
-		p_error("Atoi: String is NULL!");
-	while (str[i] > 0 && str[i] < 33 && str[i] != 27)
-		i++;
-	if (str[i] == 27)
-		p_error(E_INVALID_TYPE);
-	if (str[i] == '-' && ++i)
-		n = -1;
-	else if (str[i] == '+')
-		++i;
-	while (str[i] >= '0' && str[i] <= '9')
-		r = r * 10 + (str[i++] - '0');
-	while (str[i] > 0 && str[i] < 33 && str[i] != 27)
-		i++;
-	if (str[i] != '\0')
-		p_error(E_INVALID_TYPE);
-	return (r * n);
-}
-
-
-
-
