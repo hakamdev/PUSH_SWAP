@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 18:18:54 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 16:02:50 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 17:19:59 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** ADVANCED OPERATIONS ON A STACK
 */
-void	s(t_stack *stack)
+void	s(t_stack *stack, t_bool print)
 {
 	int		value;
 
@@ -24,17 +24,19 @@ void	s(t_stack *stack)
 	value = stack->data[stack->top];
 	stack->data[stack->top] = stack->data[stack->top - 1];
 	stack->data[stack->top - 1] = value;
-	printf("s%c\n", stack->label);
+	if (print)
+		printf("s%c\n", stack->label);
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	ss(t_stack *a, t_stack *b, t_bool print)
 {
-	s(a);
-	s(b);
-	printf("ss\n");
+	s(a, false);
+	s(b, false);
+	if (print)
+		printf("ss\n");
 }
 
-void	p(t_stack *src, t_stack *dest)
+void	p(t_stack *src, t_stack *dest, t_bool print)
 {
 	int		value;
 
@@ -42,10 +44,11 @@ void	p(t_stack *src, t_stack *dest)
 		return ;
 	value = src->pop(src);
 	dest->push(dest, value);
-	printf("p%c\n", dest->label);
+	if (print)
+		printf("p%c\n", dest->label);
 }
 
-void	r(t_stack *stack, t_bool reverse)
+void	r(t_stack *stack, t_bool reverse, t_bool print)
 {
 	int		i;
 	int		value;
@@ -62,7 +65,8 @@ void	r(t_stack *stack, t_bool reverse)
 			--i;
 		}
 		stack->data[0] = value;
-		printf("r%c\n", stack->label);
+		if (print)
+			printf("r%c\n", stack->label);
 	}
 	else
 	{
@@ -75,14 +79,17 @@ void	r(t_stack *stack, t_bool reverse)
 	}
 }
 
-void	rr(t_stack *a, t_stack *b, t_bool reverse)
+void	rr(t_stack *a, t_stack *b, t_bool reverse, t_bool print)
 {
-	r(a, reverse);
-	r(b, reverse);
-	if (!reverse)
-		printf("rr\n");
-	else
-		printf("rrr\n");
+	r(a, reverse, false);
+	r(b, reverse, false);
+	if (print)
+	{
+		if (!reverse)
+			printf("rr\n");
+		else
+			printf("rrr\n");
+	}
 }
 
 t_bool	is_valid(char *instr)
@@ -103,26 +110,26 @@ t_bool	apply(t_stack *a, t_stack *b, char *instr)
 	if (!is_valid(instr))
 		return (false);
 	if (strcmp(instr, "sa") == 0)
-		s(a);
+		s(a, false);
 	else if (strcmp(instr, "sb") == 0)
-		s(b);
+		s(b, false);
 	else if (strcmp(instr, "ss") == 0)
-		ss(a, b);
+		ss(a, b, false);
 	else if (strcmp(instr, "pa") == 0)
-		p(b, a);
+		p(b, a, false);
 	else if (strcmp(instr, "pb") == 0)
-		p(a, b);
+		p(a, b, false);
 	else if (strcmp(instr, "ra") == 0)
-		r(a, false);
+		r(a, false, false);
 	else if (strcmp(instr, "rb") == 0)
-		r(b, false);
+		r(b, false, false);
 	else if (strcmp(instr, "rr") == 0)
-		rr(a, b, false);
+		rr(a, b, false, false);
 	else if (strcmp(instr, "rra") == 0)
-		r(a, true);
+		r(a, true, false);
 	else if (strcmp(instr, "rrb") == 0)
-		r(b, true);
+		r(b, true, false);
 	else if (strcmp(instr, "rrr") == 0)
-		rr(a, b, true);
+		rr(a, b, true, false);
 	return (true);
 }

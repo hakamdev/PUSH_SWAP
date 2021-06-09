@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:22:59 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 16:24:40 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 17:19:08 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int		ps_handle_3(t_stack *a, t_stack *b)
 	while (!a->is_sorted(a))
 	{
 		if (a->data[2] > a->data[1] && a->data[2] > a->data[0])
-			r(a, false);
+			r(a, false, true);
 		else if (a->data[1] > a->data[0] && a->data[1] > a->data[2])
-			r(a, true);
+			r(a, true, true);
 		if (a->data[2] > a->data[1])
-			s(a);
+			s(a, true);
 	}
 	printf("");
 	return (0);
@@ -56,21 +56,21 @@ int		ps_handle_5(t_stack *a, t_stack *b)
 		{
 			moves = a->top - i + 1;
 			while (--moves > 0)
-				r(a, false);
+				r(a, false, true);
 		}
 		else
 		{
 			moves = i + 2;
 			while (--moves > 0)
-				r(a, true);
+				r(a, true, true);
 		}
-		p(a, b);
+		p(a, b, true);
 	}
 	if (b->data[b->top] < b->data[b->top - 1])
-		s(b);
+		s(b, true);
 	ps_handle_3(a, b);
-	p(b, a);
-	p(b, a);
+	p(b, a, true);
+	p(b, a, true);
 	return (0);
 }
 
@@ -100,15 +100,15 @@ char	*handle_chunk(t_stack *a, t_stack *b, int from, int to)
 		{
 			moves = a->top - i + 1;
 			while (--moves > 0)
-				r(a, false);
+				r(a, false, true);
 		}
 		else
 		{
 			moves = i + 2;
 			while (--moves > 0)
-				r(a, true);
+				r(a, true, true);
 		}
-		p(a, b);
+		p(a, b, true);
 	}
 	free(lst);
 	return (NULL);
@@ -157,18 +157,16 @@ char	*ps_handle_all(t_stack *a, t_stack *b, int chunks)
 		{
 			moves = b->top - j + 1;
 			while (--moves > 0)
-				r(b, false);
+				r(b, false, true);
 		}
 		else
 		{
 			moves = j + 2;
 			while (--moves > 0)
-				r(b, true);
+				r(b, true, true);
 		}
-		p(b, a);
+		p(b, a, true);
 	}
-
-	// display(a, false);
 	return (NULL);
 }
 
@@ -188,7 +186,7 @@ int		main(int argc, char **argv)
 	else if (a->size <= 5)
 		ps_handle_5(a, b);
 	else if (a->size <= 100)
-		ps_handle_all(a, b, 5);
+		ps_handle_all(a, b, 6);
 	else
 		ps_handle_all(a, b, 15);
 	return (0);

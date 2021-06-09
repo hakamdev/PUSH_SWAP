@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 16:00:04 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 17:17:57 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ void	display_list(t_list *list);
 /*
 ** ADVANCED OPERATIONS ON A STACK
 */
-void	s(t_stack *stack);
-void	ss(t_stack *a, t_stack *b);
-void	p(t_stack *src, t_stack *dest);
-void	r(t_stack *stack, t_bool reverse);
-void	rr(t_stack *a, t_stack *b, t_bool reverse);
+void	s(t_stack *stack, t_bool print);
+void	ss(t_stack *a, t_stack *b, t_bool print);
+void	p(t_stack *src, t_stack *dest, t_bool print);
+void	r(t_stack *stack, t_bool reverse, t_bool print);
+void	rr(t_stack *a, t_stack *b, t_bool reverse, t_bool print);
 
 t_bool	apply(t_stack *a, t_stack *b, char *instr);
 char	*add(char * str_instrs, int instr);
