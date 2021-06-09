@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 14:22:33 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:00:30 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 21:38:52 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,9 @@ int			get_next_line(int fd, char **line)
 	if (sread > 0)
 		return (1);
 	return (sread);
+}
+
+int			get_next_line2(int fd, char **line)
+{
+	
 }
