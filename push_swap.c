@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:22:59 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 20:56:06 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 21:31:26 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ps_handle_3(t_stack *a, t_stack *b)
 	printf("");
 }
 
-int		ps_handle_5(t_stack *a, t_stack *b)
+int	ps_handle_5(t_stack *a, t_stack *b)
 {
 	int		i;
 	int		moves;
@@ -62,12 +62,12 @@ int		ps_handle_5(t_stack *a, t_stack *b)
 	return (0);
 }
 
-int		ps_handle_all(t_stack *a, t_stack *b, int chunks)
+int	ps_handle_all(t_stack *a, t_stack *b, int chunks)
 {
 	int		i;
 	int		j;
 	int		moves;
-	t_list *lst;
+	t_list	*lst;
 
 	lst = new_list_from(a);
 	chunk_stack(a, b, chunks);
@@ -78,11 +78,11 @@ int		ps_handle_all(t_stack *a, t_stack *b, int chunks)
 		while (++j < b->size)
 		{
 			if (b->data[j] == lst->data[i])
-				break;
+				break ;
 			if (b->data[b->top - j] == lst->data[i])
 			{
 				j = b->top - j;
-				break;
+				break ;
 			}
 		}
 		move_to_top(b, j);
@@ -92,7 +92,7 @@ int		ps_handle_all(t_stack *a, t_stack *b, int chunks)
 	return (0);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack		*a;
 	t_stack		*b;

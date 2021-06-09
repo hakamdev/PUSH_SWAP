@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 20:14:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:23:58 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 21:30:09 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	push(t_stack *this, int value)
 	this->is_empty = false;
 }
 
-int		pop(t_stack *this)
+int	pop(t_stack *this)
 {
 	int		value;
-	
+
 	if (this->size == 0)
 		p_error(E_UNDERFLOW);
 	value = this->data[this->top--];
@@ -60,7 +60,7 @@ int		pop(t_stack *this)
 	return (value);
 }
 
-int		peek(t_stack *this)
+int	peek(t_stack *this)
 {
 	if (this->size == 0)
 		p_error(E_UNDERFLOW);

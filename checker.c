@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 19:56:07 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:11:24 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 21:37:04 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 t_bool	is_valid(char *instr)
 {
-	int		i;
+	int			i;
+	const char	instrs[][11]
+	= {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr", ""};
 
-	const char	instrs[][11] =
-	{"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr", ""};
 	i = -1;
 	while (++i < 12)
 		if (strcmp(instr, instrs[i]) == 0)
@@ -55,7 +55,7 @@ t_bool	apply(t_stack *a, t_stack *b, char *instr)
 	return (true);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int			read;
 	char		*instr;

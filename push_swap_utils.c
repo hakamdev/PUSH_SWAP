@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:55:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 20:55:57 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 21:32:45 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ void	handle_chunk(t_stack *a, t_stack *b, int from, int to)
 		while (++i < a->size)
 		{
 			if (a->data[i] >= lst->data[from] && a->data[i] <= lst->data[to])
-				break;
+				break ;
 			if (a->data[a->top - i] >= lst->data[from]
 				&& a->data[a->top - i] <= lst->data[to])
 			{
 				i = a->top - i;
-				break;
+				break ;
 			}
 		}
 		move_to_top(a, i);
@@ -61,9 +61,9 @@ void	handle_chunk(t_stack *a, t_stack *b, int from, int to)
 
 void	chunk_stack(t_stack *a, t_stack *b, int chunks)
 {
-	int	loops;
-	int chunk_size = a->size / chunks;
-		
+	int			loops;
+	const int	chunk_size = a->size / chunks;
+
 	loops = -1;
 	while (++loops < chunks)
 		handle_chunk(a, b, 0, chunk_size - 1);

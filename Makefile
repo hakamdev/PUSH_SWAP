@@ -6,7 +6,7 @@
 #    By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 18:20:02 by ehakam            #+#    #+#              #
-#    Updated: 2021/06/09 21:25:29 by ehakam           ###   ########.fr        #
+#    Updated: 2021/06/09 21:34:47 by ehakam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ SRC_CKR	=	checker.c \
 			stack_core.c \
 			stack_init.c \
 			instructions.c \
-			stack_display.c \
 			utility/utility.c \
 			stack_init_utils.c \
 			utility/get_next_line.c
@@ -23,7 +22,6 @@ SRC_PS	=	push_swap.c \
 			stack_core.c \
 			stack_init.c \
 			instructions.c \
-			stack_display.c \
 			push_swap_utils.c \
 			utility/utility.c \
 			stack_init_utils.c \

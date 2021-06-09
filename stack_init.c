@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:43:21 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:23:47 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 21:28:32 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_bool	contains(t_stack *this, int value)
 	return (false);
 }
 
-t_stack			*new_stack_s(int limit, char label)
+t_stack	*new_stack_s(int limit, char label)
 {
 	int		i;
 	t_stack	*new;
@@ -57,7 +57,7 @@ t_stack			*new_stack_s(int limit, char label)
 	return (new);
 }
 
-t_stack			*new_stack_arg(int ac, char **av, char label)
+t_stack	*new_stack_arg(int ac, char **av, char label)
 {
 	int		i;
 	int		value;

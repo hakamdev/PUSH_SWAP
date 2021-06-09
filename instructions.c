@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 18:18:54 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:11:15 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 21:34:28 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,15 @@ void	r(t_stack *stack, t_bool reverse, t_bool print)
 {
 	int		i;
 	int		value;
-	
+
 	if (!stack || stack->size < 2)
 		return ;
 	if (!reverse)
 	{
 		value = stack->data[stack->top];
-		i = stack->top;
-		while (i > 0)
-		{
+		i = stack->size;
+		while (--i > 0)
 			stack->data[i] = stack->data[i - 1];
-			--i;
-		}
 		stack->data[0] = value;
 		if (print)
 			printf("r%c\n", stack->label);

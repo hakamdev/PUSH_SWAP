@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:45:46 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 20:58:23 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 21:28:59 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	put_value_sorted(int *data, int size, int value)
 	}
 }
 
-t_list		*new_list_from(t_stack *stack)
+t_list	*new_list_from(t_stack *stack)
 {
 	int		i;
 	t_list	*lst;
@@ -54,7 +54,7 @@ t_list		*new_list_from(t_stack *stack)
 	return (lst);
 }
 
-int			ft_atoi_err(char *str)
+int	ft_atoi_err(char *str)
 {
 	int		i;
 	int		n;
@@ -82,7 +82,7 @@ int			ft_atoi_err(char *str)
 	return (r * n);
 }
 
-void		free_stack(t_stack *s)
+void	free_stack(t_stack *s)
 {
 	if (!s)
 		return ;
@@ -91,7 +91,7 @@ void		free_stack(t_stack *s)
 	free(s);
 }
 
-void		free_list(t_list *l)
+void	free_list(t_list *l)
 {
 	if (!l)
 		return ;
