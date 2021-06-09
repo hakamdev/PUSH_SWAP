@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 18:18:54 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/07 19:24:50 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 16:02:50 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ void	s(t_stack *stack)
 	value = stack->data[stack->top];
 	stack->data[stack->top] = stack->data[stack->top - 1];
 	stack->data[stack->top - 1] = value;
+	printf("s%c\n", stack->label);
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
 	s(a);
 	s(b);
+	printf("ss\n");
 }
 
 void	p(t_stack *src, t_stack *dest)
@@ -40,6 +42,7 @@ void	p(t_stack *src, t_stack *dest)
 		return ;
 	value = src->pop(src);
 	dest->push(dest, value);
+	printf("p%c\n", dest->label);
 }
 
 void	r(t_stack *stack, t_bool reverse)
@@ -59,6 +62,7 @@ void	r(t_stack *stack, t_bool reverse)
 			--i;
 		}
 		stack->data[0] = value;
+		printf("r%c\n", stack->label);
 	}
 	else
 	{
@@ -67,6 +71,7 @@ void	r(t_stack *stack, t_bool reverse)
 		while (++i < stack->top)
 			stack->data[i] = stack->data[i + 1];
 		stack->data[stack->top] = value;
+		printf("rr%c\n", stack->label);
 	}
 }
 
@@ -74,6 +79,10 @@ void	rr(t_stack *a, t_stack *b, t_bool reverse)
 {
 	r(a, reverse);
 	r(b, reverse);
+	if (!reverse)
+		printf("rr\n");
+	else
+		printf("rrr\n");
 }
 
 t_bool	is_valid(char *instr)
@@ -117,4 +126,3 @@ t_bool	apply(t_stack *a, t_stack *b, char *instr)
 		rr(a, b, true);
 	return (true);
 }
-

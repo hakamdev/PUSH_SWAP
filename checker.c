@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 19:56:07 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/08 17:11:32 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 16:24:54 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int		main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	a = new_stack_arg(argc, argv);
+	a = new_stack_arg(argc, argv, 'a');
 	if (!a)
 		return (0);
-	b = new_stack_s(argc);
+	b = new_stack_s(argc, 'b');
 	while (true)
 	{
 		read = get_next_line(0, &instr);

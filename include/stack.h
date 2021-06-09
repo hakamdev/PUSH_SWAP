@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/05 18:42:46 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 16:00:04 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	s_stack
 	int		limit;
 	int		top;
 	int		tail;
+	char	label;
 	void	(*push)(struct s_stack *this, int value);
 	int		(*pop)(struct s_stack *this);
 	int		(*peek)(struct s_stack *this);
@@ -55,10 +56,10 @@ typedef struct	s_list
 /*
 ** FUNCTIONS FOR INITIALIZING A STACK
 */
-t_stack *new_stack();
-t_stack *new_stack_s(int limit);
-t_stack	*new_stack_arg(int ac, char **av);
-t_stack	*new_stack_from(t_stack *other);
+t_stack *new_stack(char label);
+t_stack *new_stack_s(int limit, char label);
+t_stack	*new_stack_arg(int ac, char **av, char label);
+t_stack	*new_stack_from(t_stack *other, char label);
 t_list	*new_list_from(t_stack *stack);
 
 /*

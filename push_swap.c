@@ -6,47 +6,28 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:22:59 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/08 22:03:37 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 16:24:40 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/stack.h"
 
-char	*add(char *str_instrs, int instr)
-{
-	const char	instrs[][11] =
-		{"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr"};
-	str_instrs = ft_strjoin(str_instrs, (char *)instrs[instr]);
-	str_instrs = ft_strjoin(str_instrs, "\n");
-	return (str_instrs);
-}
-
-char	*ps_handle_3(t_stack *a, t_stack *b, char *final_str)
+int		ps_handle_3(t_stack *a, t_stack *b)
 {
 	while (!a->is_sorted(a))
 	{
 		if (a->data[2] > a->data[1] && a->data[2] > a->data[0])
-		{
 			r(a, false);
-			final_str = add(final_str, RA);
-		}
 		else if (a->data[1] > a->data[0] && a->data[1] > a->data[2])
-		{
 			r(a, true);
-			final_str = add(final_str, RRA);
-		}
 		if (a->data[2] > a->data[1])
-		{
 			s(a);
-			final_str = add(final_str, SA);
-		}
 	}
-	if (!final_str)
-		return (strdup(""));
-	return (final_str);
+	printf("");
+	return (0);
 }
 
-char	*ps_handle_5(t_stack *a, t_stack *b, char *final_str)
+int		ps_handle_5(t_stack *a, t_stack *b)
 {
 	int		i;
 	int		moves;
@@ -54,10 +35,9 @@ char	*ps_handle_5(t_stack *a, t_stack *b, char *final_str)
 	t_list	*lst;
 
 	if (a->is_sorted(a))
-		return (ft_strjoin(final_str, ""));
+		return (printf(""));
 	lst = new_list_from(a);
 	median = lst->data[(lst->size - 1) / 2];
-	
 	while (a->size > 3)
 	{
 		i = a->top + 1;
@@ -76,98 +56,30 @@ char	*ps_handle_5(t_stack *a, t_stack *b, char *final_str)
 		{
 			moves = a->top - i + 1;
 			while (--moves > 0)
-			{
 				r(a, false);
-				final_str = add(final_str, RA);
-			}
 		}
 		else
 		{
 			moves = i + 2;
 			while (--moves > 0)
-			{
 				r(a, true);
-				final_str = add(final_str, RRA);
-			}
 		}
 		p(a, b);
-		final_str = add(final_str, PB);
 	}
 	if (b->data[b->top] < b->data[b->top - 1])
-	{
 		s(b);
-		final_str = add(final_str, SB);
-	}
-	final_str = ps_handle_3(a, b, final_str);
+	ps_handle_3(a, b);
 	p(b, a);
 	p(b, a);
-	final_str = add(final_str, PA);
-	final_str = add(final_str, PA);
-	return (final_str);
+	return (0);
 }
 
-char	*ps_handle_all2(t_stack *a, t_stack *b, char *final_str)
-{
-	int		i;
-	int		j;
-	int		moves;
-
-	i = -1;
-	
-	t_list *lst = new_list_from(a);
-	while (++i < lst->size)
-	{
-		j = -1;
-		while (++j < a->size)
-		{
-			if (a->data[j] == lst->data[i])
-			{
-				break ;
-			}
-			if (a->data[a->top - j] == lst->data[i])
-			{
-				j = a->top - j;
-				break ;
-			}
-		}
-		
-		if (a->top - j < j + 1)
-		{
-			moves = a->top - j + 1;
-			while (--moves > 0)
-			{
-				r(a, false);
-				final_str = add(final_str, RA);
-			}
-		}
-		else
-		{
-			moves = j + 2;
-			while (--moves > 0)
-			{
-				r(a, true);
-				final_str = add(final_str, RRA);
-			}
-		}
-		p(a, b);
-		final_str = add(final_str, PB);
-	}
-	while (b->size > 0)
-	{
-		p(b, a);
-		final_str = add(final_str, PA);
-	}
-	return (final_str);
-}
-
-char	*handle_chuck(t_stack *a, t_stack *b, int from, int to)
+char	*handle_chunk(t_stack *a, t_stack *b, int from, int to)
 {
 	int		i;
 	int		moves;
 	int num = to - from;
-	char	*string_;
 
-	string_ = NULL;
 	t_list *lst = new_list_from(a);
 	while (num-- >= 0)
 	{
@@ -188,60 +100,97 @@ char	*handle_chuck(t_stack *a, t_stack *b, int from, int to)
 		{
 			moves = a->top - i + 1;
 			while (--moves > 0)
-			{
 				r(a, false);
-				string_ = add(string_, RA);
-			}
 		}
 		else
 		{
 			moves = i + 2;
 			while (--moves > 0)
-			{
 				r(a, true);
-				string_ = add(string_, RRA);
-			}
 		}
 		p(a, b);
-		string_ = add(string_, PB);
 	}
-	display(a, false);
-	display(b, false);
-	return (string_);
+	free(lst);
+	return (NULL);
 }
 
-char	*ps_handle_all(t_stack *a, t_stack *b, char *final_str)
+int		chunk_stack(t_stack *a, t_stack *b, int chunks)
 {
-	//final_str = handle_chuck(a, b, 0, 19);
-	//final_str = handle_chuck(a, b, 20, 39);
-	// final_str = handle_chuck(a, b, 40, 59);
-	// final_str = handle_chuck(a, b, 60, 79);
-	final_str = handle_chuck(a, b, 80, 99);
-	return NULL;
+	int	loops;
+	int chunk_size = a->size / chunks;
+		
+	loops = -1;
+	while (++loops < chunks)
+		handle_chunk(a, b, 0, chunk_size - 1);
+	if (a->size > 0)
+	{
+		handle_chunk(a, b, 0, a->top);
+		chunks += 1;
+	}
+	return (chunks);
 }
-// char	*push_swap(t_stack *a, t_stack *b)
-// {
-// 	if (a->size == 3)
-// 		return (ps_handle_3(a, b));
-// 	return (NULL);
-// }
+
+char	*ps_handle_all(t_stack *a, t_stack *b, int chunks)
+{
+	int		i;
+	int		j;
+	int		moves;
+	t_list *lst = new_list_from(a);
+
+	chunks = chunk_stack(a, b, chunks);
+	i = lst->size;
+	while (--i >= 0)
+	{
+		j = -1;
+		while (++j < b->size)
+		{
+			if (b->data[j] == lst->data[i])
+				break;
+			if (b->data[b->top - j] == lst->data[i])
+			{
+				j = b->top - j;
+				break;
+			}
+		}
+
+		if (b->top - j < j + 1)
+		{
+			moves = b->top - j + 1;
+			while (--moves > 0)
+				r(b, false);
+		}
+		else
+		{
+			moves = j + 2;
+			while (--moves > 0)
+				r(b, true);
+		}
+		p(b, a);
+	}
+
+	// display(a, false);
+	return (NULL);
+}
 
 int		main(int argc, char **argv)
 {
 	t_stack		*a;
 	t_stack		*b;
-	char		*final_instr;
 
 	if (argc < 2)
 		return (0);
-	a = new_stack_arg(argc, argv);
+	a = new_stack_arg(argc, argv, 'a');
 	if (!a)
 		return (0);
-	b = new_stack_s(argc);
-	final_instr = NULL;
-	final_instr = ps_handle_all(a, b, final_instr);
-	// dprintf(2, "%s", final_instr);
-	// printf("%s", final_instr);
+	b = new_stack_s(argc, 'b');
+	if (a->size <= 3)
+		ps_handle_3(a, b);
+	else if (a->size <= 5)
+		ps_handle_5(a, b);
+	else if (a->size <= 100)
+		ps_handle_all(a, b, 5);
+	else
+		ps_handle_all(a, b, 15);
 	return (0);
 }
 

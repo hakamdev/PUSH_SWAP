@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 20:14:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/05 18:20:16 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/09 15:58:45 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 /*
 ** FUNCTIONS FOR INITIALIZING A STACK
 */
-t_stack *new_stack()
+t_stack *new_stack(char label)
 {
-	return (new_stack_s(5));
+	return (new_stack_s(5, label));
 }
 
-t_stack *new_stack_s(int limit)
+t_stack *new_stack_s(int limit, char label)
 {
 	int		i;
 	t_stack	*new;
@@ -41,7 +41,7 @@ t_stack *new_stack_s(int limit)
 	new->limit = limit;
 	new->size = 0;
 	new->top = -1;
-	new->tail = 0;
+	new->label = label;
 	new->peek = peek;
 	new->pop = pop;
 	new->push = push;
@@ -49,7 +49,7 @@ t_stack *new_stack_s(int limit)
 	return (new);
 }
 
-t_stack	*new_stack_from(t_stack *other)
+t_stack	*new_stack_from(t_stack *other, char label)
 {
 	int			i;
 	t_stack		*new;
@@ -57,9 +57,9 @@ t_stack	*new_stack_from(t_stack *other)
 	if (!other)
 		return (NULL);
 	if (other->is_empty)
-		return (new_stack_s(other->limit));
+		return (new_stack_s(other->limit, label));
 	i = -1;
-	new = new_stack_s(other->limit);
+	new = new_stack_s(other->limit, label);
 	if (!new)
 		return (NULL);
 	while (++i < other->size)
@@ -84,7 +84,7 @@ t_bool	contains(t_stack *this, int value)
 	return (false);
 }
 
-t_stack	*new_stack_arg(int ac, char **av)
+t_stack	*new_stack_arg(int ac, char **av, char label)
 {
 	int		i;
 	int		value;
@@ -93,7 +93,7 @@ t_stack	*new_stack_arg(int ac, char **av)
 	i = ac;
 	if (!av || ac < 2)
 		return (NULL);
-	new = new_stack_s(ac);
+	new = new_stack_s(ac, label);
 	while (--i > 0)
 	{
 		value = ft_atoi_err(av[i]);
