@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:22:59 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 15:42:39 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:09:27 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,22 @@ void	ps_handle_3(t_stack *a, t_stack *b)
 		if (a->data[2] > a->data[1])
 			s(a, true);
 	}
-	printf("");
 }
 
 int	ps_handle_5(t_stack *a, t_stack *b)
 {
-	int		i;
+	int		index;
 	int		moves;
 	int		median;
 	t_list	*lst;
 
-	if (a->is_sorted(a))
-		return (printf(""));
 	lst = new_list_from(a);
 	median = lst->data[(lst->size - 1) / 2];
 	free_list(lst);
 	while (a->size > 3)
 	{
-		i = a->size;
-		while (--i > 0)
-		{
-			if (a->data[i] < median)
-				break ;
-			if (a->data[a->top - i] < median)
-			{
-				i = a->top - i;
-				break ;
-			}
-		}
-		move_to_top(a, i);
+		index = get_index_less(a, median);
+		move_to_top(a, index);
 		p(a, b, true);
 	}
 	if (b->data[b->top] < b->data[b->top - 1])
@@ -65,7 +52,7 @@ int	ps_handle_5(t_stack *a, t_stack *b)
 int	ps_handle_all(t_stack *a, t_stack *b, int chunks)
 {
 	int		i;
-	int		j;
+	int		index;
 	int		moves;
 	t_list	*lst;
 
@@ -74,29 +61,21 @@ int	ps_handle_all(t_stack *a, t_stack *b, int chunks)
 	i = lst->size;
 	while (--i >= 0)
 	{
-		j = -1;
-		while (++j < b->size)
-		{
-			if (b->data[j] == lst->data[i])
-				break ;
-			if (b->data[b->top - j] == lst->data[i])
-			{
-				j = b->top - j;
-				break ;
-			}
-		}
-		move_to_top(b, j);
+		index = get_index_of(b, lst->data[i]);
+		move_to_top(b, index);
 		p(b, a, true);
 	}
 	free_list(lst);
 	return (0);
 }
 
-int	ps_handle_sorted(t_stack *a, t_stack *b)
+t_bool	ps_handle_sorted(t_stack *a, t_stack *b)
 {
 	if (a->is_sorted(a) && b->is_empty)
 	{
 		printf("");
+		free_stack(a);
+		free_stack(b);
 		return (true);
 	}
 	return (false);

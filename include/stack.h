@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 15:36:43 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:10:17 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	chunk_stack(t_stack *a, t_stack *b, int chunks);
 void	ps_handle_3(t_stack *a, t_stack *b);
 int		ps_handle_5(t_stack *a, t_stack *b);
 int		ps_handle_all(t_stack *a, t_stack *b, int chunks);
-int		ps_handle_sorted(t_stack *a, t_stack *b);
+t_bool	ps_handle_sorted(t_stack *a, t_stack *b);
+int		get_index_less(t_stack *stack, int median);
+int		get_index_of(t_stack *stack, int value);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:35:01 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 15:45:11 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:11:39 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/utility.h"
 
-int	p_error()
+int	p_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);

@@ -6,11 +6,47 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:55:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 15:42:35 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:09:37 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/stack.h"
+
+int	get_index_less(t_stack *stack, int median)
+{
+	int		i;
+
+	i = stack->size;
+	while (--i > 0)
+	{
+		if (stack->data[i] < median)
+			break ;
+		if (stack->data[stack->top - i] < median)
+		{
+			i = stack->top - i;
+			break ;
+		}
+	}
+	return (i);
+}
+
+int	get_index_of(t_stack *stack, int value)
+{
+	int		index;
+
+	index = -1;
+	while (++index < stack->size)
+	{
+		if (stack->data[index] == value)
+			break ;
+		if (stack->data[stack->top - index] == value)
+		{
+			index = stack->top - index;
+			break ;
+		}
+	}
+	return (index);
+}
 
 void	move_to_top(t_stack *s, int index)
 {
