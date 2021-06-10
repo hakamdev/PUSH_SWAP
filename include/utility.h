@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:20:44 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:08:15 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:44:58 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-#define E_UNDERFLOW "Stack Underflow, caused by POP Operation on Empty Stack"
-#define E_INVALID_TYPE "Invalid Data Type, caused by Non-Numeric value!"
-#define E_MALLOC "Memory allocation failed, caused by malloc failure!"
-
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(const char *s);
-size_t	ft_strlen(const char *s);
 char	*ft_strsub(char **s, unsigned int start, size_t n);
-int		p_error(char *message);
+size_t	ft_strlen(const char *s);
+int		p_error();
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

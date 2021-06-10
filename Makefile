@@ -6,25 +6,25 @@
 #    By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 18:20:02 by ehakam            #+#    #+#              #
-#    Updated: 2021/06/09 21:34:47 by ehakam           ###   ########.fr        #
+#    Updated: 2021/06/10 15:44:26 by ehakam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_CKR	=	checker.c \
-			stack_core.c \
-			stack_init.c \
-			instructions.c \
+SRC_CKR	=	src/checker.c \
+			src/stack_core.c \
+			src/stack_init.c \
 			utility/utility.c \
-			stack_init_utils.c \
-			utility/get_next_line.c
+			utility/get_line.c \
+			src/instructions.c \
+			src/stack_init_utils.c
 
-SRC_PS	=	push_swap.c \
-			stack_core.c \
-			stack_init.c \
-			instructions.c \
-			push_swap_utils.c \
+SRC_PS	=	src/push_swap.c \
+			src/stack_core.c \
+			src/stack_init.c \
 			utility/utility.c \
-			stack_init_utils.c \
+			src/instructions.c \
+			src/push_swap_utils.c \
+			src/stack_init_utils.c
 
 NAME	=	push_swap
 NAME_BNS=	checker

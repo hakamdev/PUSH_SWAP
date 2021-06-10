@@ -6,11 +6,11 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:45:46 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:28:59 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:45:55 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/stack.h"
+#include "../include/stack.h"
 
 /*
 ** UTIL FUNCTIONS FOR STACK/LIST
@@ -43,10 +43,10 @@ t_list	*new_list_from(t_stack *stack)
 		return (NULL);
 	lst = malloc(sizeof(t_list));
 	if (!lst)
-		p_error(E_MALLOC);
+		p_error();
 	lst->data = malloc(sizeof(int) * (stack->size + 1));
 	if (!lst->data)
-		p_error(E_MALLOC);
+		p_error();
 	i = -1;
 	lst->size = 0;
 	while (++i < stack->size)
@@ -68,7 +68,7 @@ int	ft_atoi_err(char *str)
 	while (str[i] > 0 && str[i] < 33 && str[i] != 27)
 		i++;
 	if (str[i] == 27)
-		p_error(E_INVALID_TYPE);
+		p_error();
 	if (str[i] == '-' && ++i)
 		n = -1;
 	else if (str[i] == '+')
@@ -78,7 +78,7 @@ int	ft_atoi_err(char *str)
 	while (str[i] > 0 && str[i] < 33 && str[i] != 27)
 		i++;
 	if (str[i] != '\0')
-		p_error(E_INVALID_TYPE);
+		p_error();
 	return (r * n);
 }
 

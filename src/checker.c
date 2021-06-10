@@ -6,12 +6,12 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 19:56:07 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:37:04 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:42:21 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/get_next_line.h"
-#include "include/stack.h"
+#include "../include/get_line.h"
+#include "../include/stack.h"
 
 t_bool	is_valid(char *instr)
 {
@@ -21,7 +21,7 @@ t_bool	is_valid(char *instr)
 
 	i = -1;
 	while (++i < 12)
-		if (strcmp(instr, instrs[i]) == 0)
+		if (ft_strcmp(instr, instrs[i]) == 0)
 			return (true);
 	return (false);
 }
@@ -30,27 +30,27 @@ t_bool	apply(t_stack *a, t_stack *b, char *instr)
 {
 	if (!is_valid(instr))
 		return (false);
-	if (strcmp(instr, "sa") == 0)
+	if (ft_strcmp(instr, "sa") == 0)
 		s(a, false);
-	else if (strcmp(instr, "sb") == 0)
+	else if (ft_strcmp(instr, "sb") == 0)
 		s(b, false);
-	else if (strcmp(instr, "ss") == 0)
+	else if (ft_strcmp(instr, "ss") == 0)
 		ss(a, b, false);
-	else if (strcmp(instr, "pa") == 0)
+	else if (ft_strcmp(instr, "pa") == 0)
 		p(b, a, false);
-	else if (strcmp(instr, "pb") == 0)
+	else if (ft_strcmp(instr, "pb") == 0)
 		p(a, b, false);
-	else if (strcmp(instr, "ra") == 0)
+	else if (ft_strcmp(instr, "ra") == 0)
 		r(a, false, false);
-	else if (strcmp(instr, "rb") == 0)
+	else if (ft_strcmp(instr, "rb") == 0)
 		r(b, false, false);
-	else if (strcmp(instr, "rr") == 0)
+	else if (ft_strcmp(instr, "rr") == 0)
 		rr(a, b, false, false);
-	else if (strcmp(instr, "rra") == 0)
+	else if (ft_strcmp(instr, "rra") == 0)
 		r(a, true, false);
-	else if (strcmp(instr, "rrb") == 0)
+	else if (ft_strcmp(instr, "rrb") == 0)
 		r(b, true, false);
-	else if (strcmp(instr, "rrr") == 0)
+	else if (ft_strcmp(instr, "rrr") == 0)
 		rr(a, b, true, false);
 	return (true);
 }
@@ -70,7 +70,7 @@ int	main(int argc, char **argv)
 	b = new_stack_s(argc, 'b');
 	while (true)
 	{
-		read = get_next_line(0, &instr);
+		read = get_line(&instr);
 		if (read < 1)
 			break ;
 		if (!apply(a, b, instr))

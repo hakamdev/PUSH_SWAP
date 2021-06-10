@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:23:12 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:36:43 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,11 @@
 
 # include <unistd.h>
 # include <stdio.h>
-////////
-# include <string.h>
 # include <stdlib.h>
 # include "types.h"
 # include "utility.h"
 
-# define SA 0
-# define SB 1
-# define SS 2
-# define PA 3
-# define PB 4
-# define RA 5
-# define RB 6
-# define RR 7
-# define RRA 8
-# define RRB 9
-# define RRR 10
-
-typedef struct	s_stack
+typedef struct s_stack
 {
 	int		*data;
 	int		size;
@@ -46,18 +32,18 @@ typedef struct	s_stack
 	int		(*peek)(struct s_stack *this);
 	t_bool	(*is_sorted)(struct s_stack *this);
 	t_bool	is_empty;
-} t_stack;
+}				t_stack;
 
-typedef struct	s_list
+typedef struct s_list
 {
-	int *data;
-	int	size;
+	int		*data;
+	int		size;
 }				t_list;
 
 /*
 ** FUNCTIONS FOR INITIALIZING A STACK
 */
-t_stack *new_stack_s(int limit, char label);
+t_stack	*new_stack_s(int limit, char label);
 t_stack	*new_stack_arg(int ac, char **av, char label);
 t_list	*new_list_from(t_stack *stack);
 int		ft_atoi_err(char *str);
@@ -75,12 +61,6 @@ void	push(t_stack *this, int value);
 int		pop(t_stack *this);
 int		peek(t_stack *this);
 t_bool	is_sorted(t_stack *this);
-
-/*
-** DISPLAY
-*/
-void	display(t_stack *stack, t_bool meta);
-void	display_list(t_list *list);
 
 /*
 ** ADVANCED OPERATIONS ON A STACK
@@ -106,5 +86,6 @@ void	chunk_stack(t_stack *a, t_stack *b, int chunks);
 void	ps_handle_3(t_stack *a, t_stack *b);
 int		ps_handle_5(t_stack *a, t_stack *b);
 int		ps_handle_all(t_stack *a, t_stack *b, int chunks);
+int		ps_handle_sorted(t_stack *a, t_stack *b);
 
 #endif

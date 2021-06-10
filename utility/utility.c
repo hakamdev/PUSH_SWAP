@@ -6,38 +6,26 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:35:01 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:24:12 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:45:11 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/utility.h"
 
-int		p_error(char *message)
+int	p_error()
 {
 	write(2, "Error\n", 6);
-	//write(2, message, ft_strlen(message));
-	//write(2, "\n\n", 2);
 	exit(1);
 }
 
-char	*ft_strsub(char **s, unsigned int start, size_t n)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	char			*ss;
-	unsigned int	lens;
-	unsigned int	i;
+	int		i;
 
 	i = 0;
-	if (*s == NULL)
-		return (NULL);
-	lens = ft_strlen(*s);
-	if (start > lens)
-		n = 0;
-	if (!(ss = (char *)malloc(n + 1)))
-		return (NULL);
-	while (i < n && start < lens)
-		*(ss + i++) = *(*s + start++);
-	*(ss + i) = '\0';
-	return (ss);
+	while (s1[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -57,13 +45,14 @@ char	*ft_strjoin(char *s1, char *s2)
 	j = 0;
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	if (!(ss = malloc(len1 + len2 + 1)))
+	ss = malloc(len1 + len2 + 1);
+	if (!ss)
 		return (NULL);
 	while (++i < len1)
-		*(ss + i) = *((char *)(s1 + i));
+		ss[i] = s1[i];
 	while (j < len2)
-		*(ss + i++) = *((char *)(s2 + j++));
-	*(ss + i) = '\0';
+		ss[i++] = s2[j++];
+	ss[i] = '\0';
 	free(s1);
 	return (ss);
 }
@@ -74,25 +63,23 @@ char	*ft_strdup(const char *s)
 	size_t	lens;
 	size_t	i;
 
-	i = 0;
+	i = -1;
 	lens = ft_strlen(s);
-	if (!(ss = (char *)malloc(lens + 1)))
+	ss = (char *)malloc(lens + 1);
+	if (!ss)
 		return (NULL);
-	while (i < lens)
-	{
+	while (++i < lens)
 		ss[i] = s[i];
-		i++;
-	}
 	ss[i] = '\0';
 	return (ss);
 }
 
 size_t	ft_strlen(const char *s)
 {
-	unsigned int	i;
+	int	i;
 
-	i = 0;
-	while (*(s + i))
-		i++;
+	i = -1;
+	while (s[++i])
+		;
 	return (i);
 }

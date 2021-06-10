@@ -6,11 +6,11 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 18:18:54 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:34:28 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:42:32 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/stack.h"
+#include "../include/stack.h"
 
 /*
 ** ADVANCED OPERATIONS ON A STACK

@@ -6,18 +6,17 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 20:05:17 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/01 20:06:26 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:37:31 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
-#define TYPES_H
+# define TYPES_H
 
 typedef enum e_bool
 {
 	false = 0,
 	true = 1
 }			t_bool;
-
 
 #endif

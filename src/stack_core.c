@@ -6,11 +6,11 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 20:14:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:30:09 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:45:44 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/stack.h"
+#include "../include/stack.h"
 
 /*
 ** CORE OPERATIONS ON A STACK
@@ -52,7 +52,7 @@ int	pop(t_stack *this)
 	int		value;
 
 	if (this->size == 0)
-		p_error(E_UNDERFLOW);
+		p_error();
 	value = this->data[this->top--];
 	this->size--;
 	if (this->size == 0)
@@ -63,7 +63,7 @@ int	pop(t_stack *this)
 int	peek(t_stack *this)
 {
 	if (this->size == 0)
-		p_error(E_UNDERFLOW);
+		p_error();
 	return (this->data[this->top]);
 }
 

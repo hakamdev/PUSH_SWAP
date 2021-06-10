@@ -6,11 +6,11 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:55:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:32:45 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:42:35 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/stack.h"
+#include "../include/stack.h"
 
 void	move_to_top(t_stack *s, int index)
 {

@@ -6,11 +6,11 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:43:21 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:28:32 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:42:48 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/stack.h"
+#include "../include/stack.h"
 
 /*
 ** FUNCTIONS FOR INITIALIZING A STACK

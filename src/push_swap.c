@@ -6,11 +6,11 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:22:59 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/09 21:31:26 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:42:39 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/stack.h"
+#include "../include/stack.h"
 
 void	ps_handle_3(t_stack *a, t_stack *b)
 {
@@ -92,6 +92,16 @@ int	ps_handle_all(t_stack *a, t_stack *b, int chunks)
 	return (0);
 }
 
+int	ps_handle_sorted(t_stack *a, t_stack *b)
+{
+	if (a->is_sorted(a) && b->is_empty)
+	{
+		printf("");
+		return (true);
+	}
+	return (false);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack		*a;
@@ -103,6 +113,8 @@ int	main(int argc, char **argv)
 	if (!a)
 		return (0);
 	b = new_stack_s(argc, 'b');
+	if (ps_handle_sorted(a, b))
+		return (0);
 	if (a->size <= 3)
 		ps_handle_3(a, b);
 	else if (a->size <= 5)
