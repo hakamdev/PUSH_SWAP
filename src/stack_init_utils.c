@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:45:46 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 16:13:41 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 20:01:59 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,18 @@ int	ft_atoi_err(char *str)
 	i = 0;
 	r = 0;
 	n = 1;
-	if (!str)
-		p_error();
 	while (str[i] > 0 && str[i] < 33 && str[i] != 27)
 		i++;
-	if (str[i] == 27)
-		p_error();
 	if (str[i] == '-' && ++i)
 		n = -1;
 	else if (str[i] == '+')
 		++i;
 	while (str[i] >= '0' && str[i] <= '9')
+	{
 		r = r * 10 + (str[i++] - '0');
+		if ((n == 1 && r > MAXINT) || (n == -1 && r > MININT))
+			p_error();
+	}
 	while (str[i] > 0 && str[i] < 33 && str[i] != 27)
 		i++;
 	if (str[i] != '\0')

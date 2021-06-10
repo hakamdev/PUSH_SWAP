@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 16:16:13 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 19:44:52 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdlib.h>
 # include "types.h"
 # include "utility.h"
+
+# define MAXINT 2147483647
+# define MININT 2147483648
 
 typedef struct s_stack
 {

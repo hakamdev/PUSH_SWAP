@@ -6,15 +6,15 @@
 #    By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 18:20:02 by ehakam            #+#    #+#              #
-#    Updated: 2021/06/10 16:17:49 by ehakam           ###   ########.fr        #
+#    Updated: 2021/06/10 17:00:52 by ehakam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_CKR	=	src/checker.c \
+SRC_CKR	=	src/checker_bonus.c \
+			utility/get_line_bonus.c \
 			src/stack_core.c \
 			src/stack_init.c \
 			utility/utility.c \
-			utility/get_line.c \
 			src/instructions.c \
 			src/stack_init_utils.c
 
@@ -46,4 +46,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME) $(NAME_BNS)
 
-re: fclean all bonus
+re: fclean all
+
+norm:
+	@norminette */*.h */*.c
