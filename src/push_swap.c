@@ -6,13 +6,13 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:22:59 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 16:09:27 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:17:01 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/stack.h"
 
-void	ps_handle_3(t_stack *a, t_stack *b)
+void	ps_handle_3(t_stack *a)
 {
 	while (!a->is_sorted(a))
 	{
@@ -28,7 +28,6 @@ void	ps_handle_3(t_stack *a, t_stack *b)
 int	ps_handle_5(t_stack *a, t_stack *b)
 {
 	int		index;
-	int		moves;
 	int		median;
 	t_list	*lst;
 
@@ -43,7 +42,7 @@ int	ps_handle_5(t_stack *a, t_stack *b)
 	}
 	if (b->data[b->top] < b->data[b->top - 1])
 		s(b, true);
-	ps_handle_3(a, b);
+	ps_handle_3(a);
 	p(b, a, true);
 	p(b, a, true);
 	return (0);
@@ -53,7 +52,6 @@ int	ps_handle_all(t_stack *a, t_stack *b, int chunks)
 {
 	int		i;
 	int		index;
-	int		moves;
 	t_list	*lst;
 
 	lst = new_list_from(a);
@@ -95,7 +93,7 @@ int	main(int argc, char **argv)
 	if (ps_handle_sorted(a, b))
 		return (0);
 	if (a->size <= 3)
-		ps_handle_3(a, b);
+		ps_handle_3(a);
 	else if (a->size <= 5)
 		ps_handle_5(a, b);
 	else if (a->size <= 100)

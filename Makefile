@@ -6,7 +6,7 @@
 #    By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 18:20:02 by ehakam            #+#    #+#              #
-#    Updated: 2021/06/10 15:44:26 by ehakam           ###   ########.fr        #
+#    Updated: 2021/06/10 16:17:49 by ehakam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,17 @@ SRC_PS	=	src/push_swap.c \
 
 NAME	=	push_swap
 NAME_BNS=	checker
+FLAGS	=	-Wall -Wextra -Werror
 
-all: $(NAME) $(NAME_BNS)
+all: $(NAME)
+
+bonus: $(NAME_BNS)
 
 $(NAME): $(SRC_PS)
-	@gcc $(SRC_PS) -o $(NAME)
+	@gcc $(FLAGS) $(SRC_PS) -o $(NAME)
 
 $(NAME_BNS): $(SRC_CKR)
-	@gcc $(SRC_CKR) -o $(NAME_BNS)
+	@gcc $(FLAGS) $(SRC_CKR) -o $(NAME_BNS)
 
 clean:
 	@rm -rf *.o
@@ -43,4 +46,4 @@ clean:
 fclean: clean
 	@rm -rf $(NAME) $(NAME_BNS)
 
-re: fclean all
+re: fclean all bonus

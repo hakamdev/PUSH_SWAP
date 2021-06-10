@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:55:28 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 16:09:37 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:16:39 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	move_to_top(t_stack *s, int index)
 void	handle_chunk(t_stack *a, t_stack *b, int from, int to)
 {
 	int			i;
-	int			moves;
 	int			num;
 	t_list		*lst;
 

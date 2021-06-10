@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:43:21 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 15:42:48 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:13:34 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_stack	*new_stack_arg(int ac, char **av, char label)
 	{
 		value = ft_atoi_err(av[i]);
 		if (contains(new, value))
-			p_error("Duplicate Values!");
+			p_error();
 		new->push(new, value);
 	}
 	return (new);

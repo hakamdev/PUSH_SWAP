@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 20:45:46 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 15:45:55 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:13:41 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_atoi_err(char *str)
 	r = 0;
 	n = 1;
 	if (!str)
-		p_error("Atoi: String is NULL!");
+		p_error();
 	while (str[i] > 0 && str[i] < 33 && str[i] != 27)
 		i++;
 	if (str[i] == 27)

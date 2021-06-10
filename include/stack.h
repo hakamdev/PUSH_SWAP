@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:52:57 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 16:10:17 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:16:13 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_bool	is_valid(char *instr);
 void	move_to_top(t_stack *s, int index);
 void	handle_chunk(t_stack *a, t_stack *b, int from, int to);
 void	chunk_stack(t_stack *a, t_stack *b, int chunks);
-void	ps_handle_3(t_stack *a, t_stack *b);
+void	ps_handle_3(t_stack *a);
 int		ps_handle_5(t_stack *a, t_stack *b);
 int		ps_handle_all(t_stack *a, t_stack *b, int chunks);
 t_bool	ps_handle_sorted(t_stack *a, t_stack *b);

@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 19:56:07 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 15:42:21 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:13:51 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
 		if (read < 1)
 			break ;
 		if (!apply(a, b, instr))
-			p_error("Invalid Instruction!");
+			p_error();
 		free(instr);
 	}
 	if (a->is_sorted(a) && b->is_empty)
