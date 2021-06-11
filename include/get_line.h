@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 15:26:09 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 15:32:16 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/11 17:21:56 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
 # include "utility.h"
 
 int		get_line(char **line);
+void	put_line(char *instr, char label);
 
 #endif

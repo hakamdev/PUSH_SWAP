@@ -6,11 +6,12 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 18:18:54 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 15:42:32 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/11 17:24:47 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/stack.h"
+#include "../include/get_line.h"
 
 /*
 ** ADVANCED OPERATIONS ON A STACK
@@ -25,7 +26,7 @@ void	s(t_stack *stack, t_bool print)
 	stack->data[stack->top] = stack->data[stack->top - 1];
 	stack->data[stack->top - 1] = value;
 	if (print)
-		printf("s%c\n", stack->label);
+		put_line("s", stack->label);
 }
 
 void	ss(t_stack *a, t_stack *b, t_bool print)
@@ -33,7 +34,7 @@ void	ss(t_stack *a, t_stack *b, t_bool print)
 	s(a, false);
 	s(b, false);
 	if (print)
-		printf("ss\n");
+		put_line("ss", '\0');
 }
 
 void	p(t_stack *src, t_stack *dest, t_bool print)
@@ -45,7 +46,7 @@ void	p(t_stack *src, t_stack *dest, t_bool print)
 	value = src->pop(src);
 	dest->push(dest, value);
 	if (print)
-		printf("p%c\n", dest->label);
+		put_line("p", dest->label);
 }
 
 void	r(t_stack *stack, t_bool reverse, t_bool print)
@@ -63,7 +64,7 @@ void	r(t_stack *stack, t_bool reverse, t_bool print)
 			stack->data[i] = stack->data[i - 1];
 		stack->data[0] = value;
 		if (print)
-			printf("r%c\n", stack->label);
+			put_line("r", stack->label);
 	}
 	else
 	{
@@ -73,7 +74,7 @@ void	r(t_stack *stack, t_bool reverse, t_bool print)
 			stack->data[i] = stack->data[i + 1];
 		stack->data[stack->top] = value;
 		if (print)
-			printf("rr%c\n", stack->label);
+			put_line("rr", stack->label);
 	}
 }
 
@@ -84,8 +85,8 @@ void	rr(t_stack *a, t_stack *b, t_bool reverse, t_bool print)
 	if (print)
 	{
 		if (!reverse)
-			printf("rr\n");
+			put_line("rr", '\0');
 		else
-			printf("rrr\n");
+			put_line("rrr", '\0');
 	}
 }

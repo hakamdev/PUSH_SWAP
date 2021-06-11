@@ -6,7 +6,7 @@
 /*   By: ehakam <ehakam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:22:59 by ehakam            #+#    #+#             */
-/*   Updated: 2021/06/10 16:57:41 by ehakam           ###   ########.fr       */
+/*   Updated: 2021/06/11 17:06:08 by ehakam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_bool	ps_handle_sorted(t_stack *a, t_stack *b)
 {
 	if (a->is_sorted(a) && b->is_empty)
 	{
-		printf("");
+		write(1, "", 1);
 		free_stack(a);
 		free_stack(b);
 		return (true);
